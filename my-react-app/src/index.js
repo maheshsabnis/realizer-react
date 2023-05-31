@@ -4,6 +4,7 @@ import './index.css';
 import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
 // Impoprted App Module as Component
 import App from './App';
+import SimpleCalculatorComponent from './components/simplecalculatorcomponent';
 import reportWebVitals from './reportWebVitals';
 
 const name = "James William Bond";
@@ -17,7 +18,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 */}
 root.render(
   <React.StrictMode>
-    <App actorname={name}/>
+    {/* <App actorname={name}/> */}
+    <SimpleCalculatorComponent></SimpleCalculatorComponent>
   </React.StrictMode>
 );
 

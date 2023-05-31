@@ -91,5 +91,21 @@
 
 - useState(initialValue, Dispatch&lt;SetState&gt;)
 ````javascript                                             
-    const [] = useState();
+    function MyComponent(){
+        const [x,setX] = useState(0);
+
+        return(
+            <input type="text" value={x} onChange={(evt)=>setX(parseInt(evt.target.value))}/> 
+        );
+    }
+   
 ````
+
+    - The 'x' is a local state property of the component
+        - In above component we have following specifications
+            - x is bpound to 'value' property of input element
+            - when the input element fires 'onChange' event, the value entered in input element will be passed to 'setX()' function that will update the 'x' state property    
+                - onChange is an event of input text element
+                - evt is event parameter
+    - The 'setX' is a callback function that will be used to update the value of 'x' based on an event that is dispatched from UI 
+    
