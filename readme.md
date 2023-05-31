@@ -67,3 +67,29 @@
                 - Update the Child Only Once irrespective of multiple times parent updates      
                     - useCallback()
                         - Avoiding the frequent child updates for each state change in parent
+
+# React app
+- package.json
+    - File that contains list of all development dependencies (devDependencies) as well as Producttion / Deployment / Runtime dependencies (dependencies)
+    - Also contains command to Built/test/run the applciation   
+- src folder 
+    - contains all code files
+- public folder
+    - contains 'index.html' this is the file that is loaded in browser and contains react application in it
+
+- Types of Components
+    - Stateless Component
+        - Component with HTML UI only
+        - No data and events
+    - Statefull Component   
+        - Component that uses Data (State) to manage HTML Rendering
+        - We can implement the statefull component using following
+            - The 'props'
+                - We can create properties dynamically for React Components using JSX 
+            - The 'state'
+                - Useing the 'useState()' hook   
+
+- useState(initialValue, Dispatch<SetState>)
+````javascript                                             
+    const [] = useState();
+````
