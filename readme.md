@@ -89,7 +89,7 @@
             - The 'state'
                 - Useing the 'useState()' hook   
 
-- useState(initialValue, Dispatch<SetState>)
+- useState(initialValue, Dispatch&lt;SetState&gt;)
 ````javascript                                             
     const [] = useState();
 ````
