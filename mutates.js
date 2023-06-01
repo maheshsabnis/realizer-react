@@ -33,7 +33,20 @@ console.log(`After modification o2.x to 20, o1.x= ${o1.x} and o2.x = ${o2.x}`);
 
 let properties = Object.keys(o2);
 console.log(properties);
-console.log(o2[properties[0]])
+console.log(o2[properties[0]]);
+
+
+const arr = [
+    {ExpenseId:101, ExpensesType:'Food'},
+    {ExpenseId:102, ExpensesType:'Home'},
+    {ExpenseId:102, ExpensesType:'Home', Amount:888},
+];
+
+let objKeys = Object.keys(arr[0]);
+
+console.log(objKeys);
+
+
 
 
 

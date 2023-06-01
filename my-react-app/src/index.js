@@ -8,6 +8,7 @@ import SimpleCalculatorComponent from './components/simplecalculatorcomponent';
 import ExpensesFormComponent from './components/expensesformcomponent/expensesformcomponent';
 import reportWebVitals from './reportWebVitals';
 import ExpensesFormCommunicationComponent from './components/expensesformcommunicaitoncomponent/expensesformcommunicationcomponent';
+import DataGridMainComponent from './components/datagridcomponentutilizer/datagridcomponentdemo';
 
 const name = "James William Bond";
 // CReate a root in index.html where the
@@ -21,7 +22,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <App actorname={name}/> */}
-     <ExpensesFormCommunicationComponent></ExpensesFormCommunicationComponent>
+     <DataGridMainComponent></DataGridMainComponent>
   </React.StrictMode>
 );
 
