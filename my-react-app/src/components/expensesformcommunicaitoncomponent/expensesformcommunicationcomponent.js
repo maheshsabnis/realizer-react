@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 import {Expenses, ExpensesTypes,ExpensesSubTypes, PaymentModes} from '../../models/expenses';
 import SelectComponent from '../reusablecomponents/selectcomponent';
 import { Button } from 'bootstrap';
+import DataGridComponent from '../reusablecomponents/datagridcomponent';
 
 const ExpensesFormCommunicationComponent=()=>{
     // 1. define state
@@ -109,12 +110,8 @@ const ExpensesFormCommunicationComponent=()=>{
                 >Save</button>
             </div>
             <br/>
-            <span>
-                {
-                    JSON.stringify(expenses)
-                }
-            </span>
-            <table className='table table-bordered table-striped'>
+            
+            {/* <table className='table table-bordered table-striped'>
                 <thead>
                     <tr>
                         {
@@ -142,7 +139,13 @@ const ExpensesFormCommunicationComponent=()=>{
                         ))
                     }
                 </tbody>
-            </table>
+            </table> */}
+
+            <DataGridComponent dataSource={expenses} CanEdit={true}
+             onRowSelection={(rec)=>setExpense(rec)}
+            ></DataGridComponent>    
+
+
         </div>
     );
 };
