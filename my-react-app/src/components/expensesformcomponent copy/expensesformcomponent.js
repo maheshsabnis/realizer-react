@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-import {Expenses, ExpensesTypes,ExpensesSubTypes, PaymentModes} from './../../models/expenses';
+import {Expenses, ExpensesTypes,ExpensesSubTypes, PaymentModes} from '../../models/expenses';
 
 const ExpensesFormComponent=()=>{
     // 1. define state
@@ -40,12 +40,6 @@ const ExpensesFormComponent=()=>{
                 <input type='text' className='form-control'
                    value={expense.PaidTo}
                    onChange={(evt)=>setExpense({...expense, PaidTo:evt.target.value})}/>
-            </div>
-            <div className='form-control'>
-                <label>Paid Amount:</label>
-                <input type='text' className='form-control'
-                   value={expense.PaidAmount}
-                   onChange={(evt)=>setExpense({...expense, PaidAmount:evt.target.value})}/>
             </div>
             <div className='form-control'>
                 <label>Expense Type:</label>

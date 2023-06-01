@@ -1,8 +1,10 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
-import {Expenses, ExpensesTypes,ExpensesSubTypes, PaymentModes} from './../../models/expenses';
+import {Expenses, ExpensesTypes,ExpensesSubTypes, PaymentModes} from '../../models/expenses';
+import SelectComponent from '../reusablecomponents/selectcomponent';
+import { Button } from 'bootstrap';
 
-const ExpensesFormComponent=()=>{
+const ExpensesFormCommunicationComponent=()=>{
     // 1. define state
     const [expense, setExpense] = useState({
         ExpenseId:0,PaidTo:'',PaidAmount:0,
@@ -12,6 +14,18 @@ const ExpensesFormComponent=()=>{
     });
     // EMpty State Array
     const [expenses, setExpenses] = useState([]);
+    const [headers,setHeaders] = useState([]);
+
+
+    // use useEffect() to load properties from the 'expense' object into the 'headers' array
+
+    useEffect(()=>{
+        // read all properties of expense object
+        setHeaders(Object.keys(expense));
+    },[]);
+
+
+
 
     const clear =()=>{
         // Reset the expense object to initial values
@@ -28,6 +42,7 @@ const ExpensesFormComponent=()=>{
     };
     return (
         <div className='container'>
+            <h1>Parent Child</h1>  
             <div className='form-control'>
                 <label>Expense Id:</label>
                 <input type='text' className='form-control'
@@ -49,41 +64,27 @@ const ExpensesFormComponent=()=>{
             </div>
             <div className='form-control'>
                 <label>Expense Type:</label>
-                <select className='form-control'
-                  value={expense.ExpensesType}
-                  onChange={(evt)=>setExpense({...expense, ExpensesType:evt.target.value})}
-                >
-                     {
-                        ExpensesTypes.map((exType,idx)=>(
-                            <option key={idx} value={exType}>{exType}</option>
-                        ))
-                     }
-                    </select> 
+                 <SelectComponent
+                 bindableProperty={expense.ExpensesType}
+                 dataSource={ExpensesTypes}
+                 onSelectionChanged={(value)=>setExpense({...expense, ExpensesType:value})}
+                 ></SelectComponent>
             </div>
             <div className='form-control'>
                 <label>Expense Sub Type:</label>
-                <select className='form-control'
-                  value={expense.ExpensesSubType}
-                  onChange={(evt)=>setExpense({...expense, ExpensesSubType:evt.target.value})}
-                >
-                    {
-                        ExpensesSubTypes.map((exSubType,idx)=>(
-                            <option key={idx} value={exSubType}>{exSubType}</option>
-                        ))
-                     }
-                    </select> 
+                <SelectComponent
+                bindableProperty={expense.ExpensesSubType}
+                 dataSource={ExpensesSubTypes}
+                 onSelectionChanged={(value)=>setExpense({...expense, ExpensesSubType:value})}
+                 ></SelectComponent>
             </div>
             <div className='form-control'>
                 <label>Payment Mode:</label>
-                <select className='form-control'
-                  value={expense.PaymentMode}
-                  onChange={(evt)=>setExpense({...expense, PaymentMode:evt.target.value})}
-                >{
-                    PaymentModes.map((payMode,idx)=>(
-                        <option key={idx} value={payMode}>{payMode}</option>
-                    ))
-                 }
-                    </select> 
+                <SelectComponent
+                bindableProperty={expense.PaymentMode}
+                 dataSource={PaymentModes}
+                 onSelectionChanged={(value)=>setExpense({...expense, PaymentMode:value})}
+                 ></SelectComponent>
             </div>
             <div className='form-control'>
                 <label>Perticulars:</label>
@@ -108,24 +109,35 @@ const ExpensesFormComponent=()=>{
                 >Save</button>
             </div>
             <br/>
-            {/* <span>
+            <span>
                 {
                     JSON.stringify(expenses)
                 }
-            </span> */}
+            </span>
             <table className='table table-bordered table-striped'>
                 <thead>
                     <tr>
-                        <th>Expenses Id</th>
-                        <th>Paid To</th>
+                        {
+                            headers.map((col,index)=>(
+                                <th key={index}>{col}</th>
+                            ))
+                        }
                     </tr>
                 </thead>
                 <tbody>
                     {
                         expenses.map((exp,idx)=>(
-                            <tr>
-                                <td>{exp.ExpenseId}</td>
-                                <td>{exp.PaidTo}</td>
+                            <tr key={idx}>
+                                 {
+                                    headers.map((col,i)=>(
+                                        <td key={i}>{exp[col]}</td>
+                                        
+                                    ))
+                                    
+                                 }
+                                 <td>
+                                            <button>Edit</button>
+                                </td>
                             </tr>
                         ))
                     }
@@ -135,4 +147,4 @@ const ExpensesFormComponent=()=>{
     );
 };
 
-export default ExpensesFormComponent;
+export default ExpensesFormCommunicationComponent;

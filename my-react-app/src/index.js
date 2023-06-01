@@ -5,7 +5,9 @@ import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
 // Impoprted App Module as Component
 import App from './App';
 import SimpleCalculatorComponent from './components/simplecalculatorcomponent';
+import ExpensesFormComponent from './components/expensesformcomponent/expensesformcomponent';
 import reportWebVitals from './reportWebVitals';
+import ExpensesFormCommunicationComponent from './components/expensesformcommunicaitoncomponent/expensesformcommunicationcomponent';
 
 const name = "James William Bond";
 // CReate a root in index.html where the
@@ -19,7 +21,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <App actorname={name}/> */}
-    <SimpleCalculatorComponent></SimpleCalculatorComponent>
+     <ExpensesFormCommunicationComponent></ExpensesFormCommunicationComponent>
   </React.StrictMode>
 );
 

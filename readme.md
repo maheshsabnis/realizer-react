@@ -109,3 +109,29 @@
                 - evt is event parameter
     - The 'setX' is a callback function that will be used to update the value of 'x' based on an event that is dispatched from UI 
     
+- To execute an operation when the component is loaded, write the code in 'useEffetc()' hook
+    - This will be executed after the component is done with its rendering 
+    - Once the logic is executed, and if any state updates are performed that causes the HTML Changes, then only that part of HTML Virtual DOM will be updated     
+# Component Development Best Practices
+- If a same UI is frequently repeted on one or multiple components then consider usin cusmtom re-usable component
+- Possible avoid hard-coding in HTML when UI is dynamically generated e.g. if tabel is generated synamically, then please do not hardcode Table COlumns
+
+- Practics for creating Re-Usable Components
+    - Plan for HTML UI
+    - Plan for Data properties based on which the UI will be generated
+    - Plan for Events as well as logic using which the component will communicate with its parent
+- Passing Data across Components
+    - Use the 'props'
+        - Immutable read-only object that will be dynamically extended with new properties.
+        - The props once created is live throughout the life of React App'  
+            - This may cost performance
+        - TO emit data from child to parent, use the JS function-equality
+            - This will bind the function from parent to child component using props     
+    - Use of React.Context
+        - This is a global object that will be used to pass data from parent to specific child as per need unlike 'props'
+            - The Context is created using
+                - createContext() method of the React object
+        - This uses 'Provider' and 'Consumer' concept
+        - The Provider (aka Parent component) uses Context.Provider to pass data to specific Child
+            - The Provider uses the 'value' property to pass data   
+        - The Consume (aka the Child component) uses 'useContext' to Consume data from Context         
