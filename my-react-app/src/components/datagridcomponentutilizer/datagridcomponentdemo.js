@@ -4,6 +4,9 @@ const DataGridMainComponent = () => {
 
 
     const [record, setRecord] = useState({});
+    const [emp,setEmp] = useState({
+        EmpNo:0, EmpName:''
+    })
 
     const Employees = [
         {EmpNo:101,EmpName:'Mahesh'},
@@ -24,9 +27,16 @@ const DataGridMainComponent = () => {
 
   return (
     <div className='container'>
+        <input type="text" value={emp.EmpNo} 
+          onChange={(evt)=> setEmp({...emp, EmpNo:parseInt(evt.target.value)})}/>
+        <br/>
+        <input type="text" value={emp.EmpName} 
+         onChange={(evt)=>setEmp({...emp, EmpName:evt.target.value})}
+        />
+        
        <DataGridComponent dataSource={Employees}
          CanEdit={true}
-         onRowSelection={(rec)=>setRecord(rec)} 
+         onRowSelection={(rec)=>setEmp(rec)} 
          ></DataGridComponent>
          <hr/>
          Selected Record {
