@@ -168,3 +168,19 @@
     useEffect(()=> {componentDidMount} return (()=>{componentWillUnMount}),[]);
 ````                  
 
+````sql
+USe ExpensesReports
+
+
+Create table HomeExpenses (
+   ExpenseId int Primary Key,
+   PaidTo varchar(200) Not Null,
+   PaidAmount int not null,
+   ExpensesType varchar(200) Not Null,
+   ExpensesSubType varchar(200) Not Null,
+   PaymentMode varchar(200) Not Null,
+   Perticulars varchar(300) Not Null,
+   PaymentDate Date default GetDate()  Not Null
+)
+````
+
