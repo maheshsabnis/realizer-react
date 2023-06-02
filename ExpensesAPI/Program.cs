@@ -8,6 +8,15 @@ builder.Services.AddDbContext<ExpensesReportsContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("AppConnStr"));
 });
+
+builder.Services.AddCors(options => {
+    options.AddPolicy("cors", policy => {
+        policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+       
+    });
+});
+
+
 builder.Services.AddControllers().AddJsonOptions(options => {
     options.JsonSerializerOptions.PropertyNamingPolicy = null;
 });
@@ -25,6 +34,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("cors");
 
 app.UseAuthorization();
 
