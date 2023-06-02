@@ -2,10 +2,12 @@ import {useState, useEffect} from 'react';
 
 import {Expenses, ExpensesTypes,ExpensesSubTypes, PaymentModes} from '../../models/expenses';
 import SelectComponent from '../reusablecomponents/selectcomponent';
-import { Button } from 'bootstrap';
+ 
 import DataGridComponent from '../reusablecomponents/datagridcomponent';
 
 const ExpensesFormCommunicationComponent=()=>{
+ // Call to External API
+
     // 1. define state
     const [expense, setExpense] = useState({
         ExpenseId:0,PaidTo:'',PaidAmount:0,
@@ -23,6 +25,7 @@ const ExpensesFormCommunicationComponent=()=>{
     useEffect(()=>{
         // read all properties of expense object
         setHeaders(Object.keys(expense));
+        console.log('Done');
     },[]);
 
 

@@ -21,8 +21,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 */}
 root.render(
   <React.StrictMode>
-    <App/>
-      {/* <ExpensesFormCommunicationComponent></ExpensesFormCommunicationComponent> */}
+    {/* <App/> */}
+      <ExpensesFormCommunicationComponent></ExpensesFormCommunicationComponent>
   </React.StrictMode>
 );
 

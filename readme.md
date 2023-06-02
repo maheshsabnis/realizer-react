@@ -135,3 +135,35 @@
         - The Provider (aka Parent component) uses Context.Provider to pass data to specific Child
             - The Provider uses the 'value' property to pass data   
         - The Consume (aka the Child component) uses 'useContext' to Consume data from Context         
+
+- External HTTP API calls from React App
+    - We need HTTP Caller Object Model, a Promise Based Objects
+        - The 'fetch()' object
+            - A default ES6 object
+        - The 'axios' Library
+            - npm install axios
+                - get(url, options):AxiosResponse
+                    - options: additional headers info
+                        - Content-Type
+                        - Authorization
+                        - datatype
+                - post(url, data, options):AxiosResponse
+                    - data, to be posted to server
+                - put(url/:id, data, options):AxiosResponse
+                    - http://server/myserver/myapi/10
+                - delete(url/:id):AxiosResponse
+            - AxiosResponse
+                - Promise
+    -  use 'useEffect()' hook for all async operations
+        - useEffect(componentDidMount Callback return componentWillUnMount callback, DEPENDENCY-PARAMETER)            
+            - componentDidMount Callback
+                - Logic for long-runnig process e.g. External HTTP Call
+            - componentWillUnMount callback
+                - The logic for cleaning resources when comoponent is to be unmounted
+                    - e.g. releasing JS Events, unsubscribe to external HTTP call Promise object
+            - DEPENDENCY-PARAMETER
+                - This is Mandatory to inform to the React that the state is updated and UI is modified, so please stop the execution of useEffect()      
+````javascript
+    useEffect(()=> {componentDidMount} return ()=>{componentWillUnMount},[]);
+````                  
+
