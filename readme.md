@@ -154,6 +154,7 @@
                 - delete(url/:id):AxiosResponse
             - AxiosResponse
                 - Promise
+                    - Promise.then(successcallback).catch(errorcallback)
     -  use 'useEffect()' hook for all async operations
         - useEffect(componentDidMount Callback return componentWillUnMount callback, DEPENDENCY-PARAMETER)            
             - componentDidMount Callback
@@ -164,6 +165,6 @@
             - DEPENDENCY-PARAMETER
                 - This is Mandatory to inform to the React that the state is updated and UI is modified, so please stop the execution of useEffect()      
 ````javascript
-    useEffect(()=> {componentDidMount} return ()=>{componentWillUnMount},[]);
+    useEffect(()=> {componentDidMount} return (()=>{componentWillUnMount}),[]);
 ````                  
 
