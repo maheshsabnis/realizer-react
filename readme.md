@@ -185,3 +185,17 @@ Create table HomeExpenses (
 ````
 
 https://expensesapi001.azurewebsites.net/api/HomeExpensesAPI
+
+- Validate all inputs
+    - Use the HTML form tag
+        - Each editable element must have the 'name' 
+    - Write custom logic for data validations
+        - Use if..else statements for validation
+    - Use of HTML 5  validation attributes
+        - requeired
+        - pattern, a regular expression
+            - e.g.
+                - '[0-9]', only numbers
+                - '[^A-Za-z]+', starts from upper case characters
+        - 
+

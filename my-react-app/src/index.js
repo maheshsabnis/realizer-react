@@ -11,6 +11,7 @@ import ExpensesFormCommunicationComponent from './components/expensesformcommuni
 import DataGridMainComponent from './components/datagridcomponentutilizer/datagridcomponentdemo';
 import ToggleComponent from './components/lifecycle/togglecomponent';
 import ExpensesHttpCallComponent from './components/expenseshttpcalls/expenseshttpcallcomponent';
+import FormValidationComponent from './components/componentvalidations/formvalidationcomponent';
 
 const name = "James William Bond";
 // CReate a root in index.html where the
@@ -24,8 +25,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <App/> */}
-      <ExpensesHttpCallComponent></ExpensesHttpCallComponent>
-
+      <FormValidationComponent></FormValidationComponent>
        
   </React.StrictMode>
 );
