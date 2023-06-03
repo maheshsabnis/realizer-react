@@ -229,5 +229,136 @@ https://expensesapi001.azurewebsites.net/api/HomeExpensesAPI
                 - a hook used for reading parameterized routes
             - BrowserRouter
                 - a Container that is integrated with React Object Model to perform routing                        
-- State Management
+
+# State Management
+- Application State Management using redux
+    - redux is a library for providing state container for JS Apps
+    - its is a defacto standard for React apps for application state management
+- Core Concepts
+    - The 'store'
+        - a application state container
+        - this is subscribed by all the components
+        - this is a singleton instance throughout the application
+    - The 'action'
+        - what has happened from 
+            - UI
+            - Result received from Async calls
+        - Action returns a JSON object with following schama
+            - type, the NAME OF ACTION that is dispatched
+                - type is mandatory
+            - payload, a parameter that contains data which must be updated in store   
+                - payload is optional  
+            - Action_Creator
+                - a method that manage the execution of action (LOGIC)    
+    - The 'reducer'    
+        - A JavaScript PURE Function
+        - This is responsible for following
+            - Listing to the action that is dispatched
+            - read the payload (if any)
+            - update the store accroding to the payload 
+        - An applicaiton can have multiple reducer function
+        - One reducer function can  call other reducer function
+        - Each reducer function has following mandator parameters
+            - initial state / state
+            - an action which is dispatched so that based on the action's returned payload the reducer will update the store     
+        - Each reducer function returns the 'state' (updated state) as output
+- Libraries
+    - redux
+        - base object model having following methods/function/objects
+            - createStore(), used to define a store 
+        - The 'Provider'
+            - the object used by react-redux to load the Redux object model for the react applicaiton in browesern so that all components loaded on browse will use the redux    
+        - The 'combineReducers()' method
+            - Agriggate all reducers for the application inside a single reducer object
+
+    - react-redux        
+        - a bridge between react and redux
+            - useDispatch()
+                - A hook that will be used to dispatch action from UI
+            - useSelector()
+                - A store can be subscribed by component using this hook   
+- CReation of action and action creator
+```` javascript
+export function action_name(){
+    /* ACTION LOGIC HERE (ONLY SYNCHRONOUS LOGIC) */
+    return {
+         type: 'ACTION_TYPE',
+         payload    
+    }
+}
+
+ /* OR */
+ export const action_name(){
+      /* ACTION LOGIC HERE (ONLY SYNCHRONOUS LOGIC) */
+    return {
+         type: 'ACTION_TYPE',
+         payload    
+    }
+ }
+````
+
+- creation of reducers
+
+```` javascript
+export function reducer_name1(state, action){
+    /* Logic to update state in store */
+
+    return state;
+}
+
+export function reducer_name2(state, action){
+    /* Logic to update state in store */
+
+    return state;
+}
+
+/* Combine all reducers */
+
+const reducers = combineReducers({reducer_name1, reducer_name2,...});
+
+/* Make all recucers directly into a single Object (here no need to use combioneReducers) */
+
+export const  reducers = (state, action)=>{
+  /* swich..case for each action type that is diuspatched */
+  switch(action.type){
+    case 'ACTION_TYPE1':
+         /* LOGIC to update state */
+         return state
+  }
+}
+
+
+````
+
+- dispatch action from component aka UI aka view
+
+````javascript
+    const dispatch = useDispatch();
+
+    dispatch(action_name);
+````
+
+- subscribe to the store in component aka UI aka view
+
+````javascript
+    const dataFromStore = useSelector(state=>state.reducer_name1);
+````
+
+- defining store
+
+````javascript
+let appstore = createStore(reducers);
+
+<Provider store={appstore}>
+    <MainReduxComponent/>
+</Provider>
+
+````
+    - all components working under MainReduxComponent will be able to subscribe to store named 'appstore'
+- LAtest Update  with Redux
+    - @reduxjs/toolkit  
+        - 'configureStore()' instead of 'createStore()'    
+````javascript
+let appstore = configureStore({reducers:reducers});
+````
 
