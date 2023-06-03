@@ -197,5 +197,37 @@ https://expensesapi001.azurewebsites.net/api/HomeExpensesAPI
             - e.g.
                 - '[0-9]', only numbers
                 - '[^A-Za-z]+', starts from upper case characters
-        - 
+
+- The Exception Handling
+    - USed in case of Composable UI,
+        - Composable UI is a mechansim where one parent has multiple children components
+        - The Parent's rendering is depending on each child component's rendering
+        - If any of the child is crashed, then the parent will also be creashed
+        - Make sure that either each child should have exception handling with fallback UI or use the React's class component and create an error boundary using 'componentyDidCatch'
+- Routing
+    - The Single Page Application (SPA)
+    - Load components on demand based on navigation request 
+    - Use Routing
+        - react-router-dom
+            - npm install react-router-dom
+            - Routes
+                - Platform for all Routes
+            
+            - Route
+                - A Single ENtry in Route table
+                - The 'index' property, that represents a default component loaded and mounted when the app is loaded in browser
+                - The 'element' property that represents the component to be loaded  
+                - The 'path' property that is used to define a URL for the 'component' so that it will be queried
+            - Outlet
+                - a Componet that is parent for all children component in routing
+            - Link
+                - a component that is used to query to the Route Table
+                - The 'to' prtoperty that is used to query to route table 
+            - useNavigate()
+                - a hook that is used to query for a route in route table using code
+            - useParams()
+                - a hook used for reading parameterized routes
+            - BrowserRouter
+                - a Container that is integrated with React Object Model to perform routing                        
+- State Management
 

@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* Since React.js uses a standard iframe HTML element 
+  to show error messages, please set it's display to none
+*/
+iframe {
+  display: none;
+}

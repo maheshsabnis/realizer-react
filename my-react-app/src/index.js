@@ -13,6 +13,10 @@ import ToggleComponent from './components/lifecycle/togglecomponent';
 import ExpensesHttpCallComponent from './components/expenseshttpcalls/expenseshttpcallcomponent';
 import FormValidationComponent from './components/componentvalidations/formvalidationcomponent';
 
+import PerentComponent from './components/errorboundary/countercomponent';
+import { BrowserRouter } from 'react-router-dom';
+import MainRoutingComponent from './components/routingapp/mainroutingcomponent';
+
 const name = "James William Bond";
 // CReate a root in index.html where the
 // React component will be mounted and rendered
@@ -25,7 +29,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <App/> */}
-      <FormValidationComponent></FormValidationComponent>
+    {/* Platform for routing */}
+    <BrowserRouter>
+       <MainRoutingComponent></MainRoutingComponent>
+    </BrowserRouter> 
        
   </React.StrictMode>
 );
